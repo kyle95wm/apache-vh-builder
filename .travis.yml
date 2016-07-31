@@ -1,0 +1,7 @@
+sudo: true
+language: bash
+
+before_script:
+    - sudo apt-get update
+script:
+    - sudo bash vh-builder.sh
