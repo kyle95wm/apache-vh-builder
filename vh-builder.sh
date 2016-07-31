@@ -32,6 +32,5 @@ fi
 EOF
 	echo "Done!"
 	service apache2 reload
-	service apache2 restart
 	exit
 fi
