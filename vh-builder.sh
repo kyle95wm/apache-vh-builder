@@ -10,7 +10,6 @@ if [ $? != "0" ] ; then
 	apt-get install apache2 -y
 fi
 if [ ! -d /var/www/html ] ; then
-	mkdir /var/www
 	mkdir /var/www/html
 fi
 echo "This script will help you to build a new virtual host file for Apache for any domain you enter"
