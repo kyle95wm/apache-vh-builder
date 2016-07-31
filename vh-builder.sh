@@ -15,7 +15,7 @@ if [ -z "$domain" ] ; then
 	read -p "What is your domain name? (i.e - example.com): " domain
 fi
 echo "Checking public DNS to see if $domain is reachable...."
-dig "$domain" >/dev/null
+dig $domain
 
 if [ "$?" != "0" ] ; then
 	echo "Oh no! I couldn't find any records for your domain."
