@@ -32,5 +32,7 @@ fi
 EOF
 	echo "Done!"
 	service apache2 reload
+	a2ensite $domain.conf
+	service apache2 reload
 	exit
 fi
