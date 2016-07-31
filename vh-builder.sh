@@ -14,17 +14,9 @@ echo "But first, please answer a few questions befroe we can continue:"
 if [ -z "$domain" ] ; then
 	read -p "What is your domain name? (i.e - example.com): " domain
 fi
-echo "Checking public DNS to see if $domain is reachable...."
-dig $domain
-
-if [ "$?" != "0" ] ; then
-	echo "Oh no! I couldn't find any records for your domain."
-	read -p "Would you like to continue anyways? [y/n "continue
-	if [ "$continue" == "y" ] ; then
-		echo "Okay great!"
-		echo "Generating virtual host for $domain...."
-		touch /etc/apache2/sites-available/$domain.conf
-		cat >/etc/apache2/sites-available/$domain.conf <<EOF
+	echo "Generating virtual host for $domain...."
+	touch /etc/apache2/sites-available/$domain.conf
+	cat >/etc/apache2/sites-available/$domain.conf <<EOF
 <VirtualHost *:80>
 	ServerName $domain
 	ServerAlias www.$domain
@@ -38,12 +30,8 @@ if [ "$?" != "0" ] ; then
 	</Directory>
 </VirtualHost>
 EOF
-		echo "Done!"
-		service apache2 reload
-		service apache2 restart
-		exit
-	else
-		echo "Goodbye!"
-		exit
-	fi
+	echo "Done!"
+	service apache2 reload
+	service apache2 restart
+	exit
 fi
